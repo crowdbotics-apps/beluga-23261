@@ -1,41 +1,29 @@
-import React from "react";
-import {
-  View,
-  Image,
-  ImageBackground,
-  TouchableOpacity,
-  Text,
-  Button,
-  Switch,
-  TextInput,
-  StyleSheet,
-  ScrollView
-} from "react-native";
-import DateTimePicker from 'react-native-datepicker';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import Slider from '@react-native-community/slider';
-import { CheckBox } from 'react-native-elements';
-import {SlideMenuIcon} from '../../../navigator/slideMenuIcon';
-
-export default class Blank extends React.Component {
-  static navigationOptions = ({navigation}) => {
-    return {
-      headerLeft: <SlideMenuIcon navigationProps={navigation} />,
-    };
+import React, { Component } from 'react'
+import { AppRegistry, View, Button, Text, StyleSheet } from 'react-native'
+class App extends Component {
+  state = {
+      count: 0,
   };
+  handleCounter = () => {
+     this.setState({"count": this.state.count + 1})  };
   
-  state = {};
-
-  render = () => (
-    <View style={styles.container}>
-      <Text>This is your new component</Text>
-    </View>
-  );
+  render() {
+      const { count } = this.state;
+      return (
+          <View>
+               <Button onPress={this.handleCounter} title="Julian"/>
+               <Text style={styles.text}>{count}</Text>
+               <Button onPress={this.handleCounter} title="Button 2"/>
+               <Text style={styles.text}>{count}</Text>
+               <Button onPress={this.handleCounter} title="Increment Count"/>
+              <Text style={styles.text}>{count}</Text>
+          </View>
+      );
+  }
 }
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginHorizontal: 16,
+  text: {
+  
   },
-});
+})
+AppRegistry.registerComponent('App', () => App)
