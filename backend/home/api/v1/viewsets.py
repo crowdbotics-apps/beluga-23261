@@ -5,6 +5,7 @@ from .serializers import (
     EventSerializer,
     EventsSerializer,
     HomePageSerializer,
+    LocationSerializer,
 )
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 from rest_framework.authtoken.serializers import AuthTokenSerializer
@@ -19,7 +20,7 @@ from home.api.v1.serializers import (
     HomePageSerializer,
     UserSerializer,
 )
-from home.models import CustomText, Event, Events, HomePage
+from home.models import CustomText, Event, Events, HomePage, Location
 
 
 class SignupViewSet(ModelViewSet):
@@ -75,3 +76,12 @@ class EventsViewSet(viewsets.ModelViewSet):
         authentication.TokenAuthentication,
     )
     queryset = Events.objects.all()
+
+
+class LocationViewSet(viewsets.ModelViewSet):
+    serializer_class = LocationSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = Location.objects.all()
