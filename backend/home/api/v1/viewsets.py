@@ -6,6 +6,7 @@ from .serializers import (
     EventsSerializer,
     HomePageSerializer,
     LocationSerializer,
+    TurkeySerializer,
 )
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 from rest_framework.authtoken.serializers import AuthTokenSerializer
@@ -20,7 +21,7 @@ from home.api.v1.serializers import (
     HomePageSerializer,
     UserSerializer,
 )
-from home.models import CustomText, Event, Events, HomePage, Location
+from home.models import CustomText, Event, Events, HomePage, Location, Turkey
 
 
 class SignupViewSet(ModelViewSet):
@@ -85,3 +86,12 @@ class LocationViewSet(viewsets.ModelViewSet):
         authentication.TokenAuthentication,
     )
     queryset = Location.objects.all()
+
+
+class TurkeyViewSet(viewsets.ModelViewSet):
+    serializer_class = TurkeySerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = Turkey.objects.all()

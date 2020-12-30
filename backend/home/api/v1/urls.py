@@ -6,6 +6,7 @@ from .viewsets import (
     EventsViewSet,
     HomePageViewSet,
     LocationViewSet,
+    TurkeyViewSet,
 )
 
 from home.api.v1.viewsets import (
@@ -23,6 +24,7 @@ router.register("homepage", HomePageViewSet)
 router.register("event", EventViewSet)
 router.register("events", EventsViewSet)
 router.register("location", LocationViewSet)
+router.register("turkey", TurkeyViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),
